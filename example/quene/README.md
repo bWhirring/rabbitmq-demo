@@ -8,5 +8,7 @@ node receive.js
 
 ### 连接客户端
 ```
-node client.js
+node client.js 1
+
+node client.js 1
 ```

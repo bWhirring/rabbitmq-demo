@@ -9,7 +9,8 @@ amqp.connect('amqp://localhost', (err, connect) => {
 
     channel.assertQueue(quene, {durable: true});
 
-    const msg = 'hhu';
+    const msg = process.argv.slice(2).join(' ') || 'Hello World!';
+
     channel.sendToQueue(quene, Buffer.from(msg));
   });
 });
