@@ -1,6 +1,6 @@
 const amqp = require('amqplib/callback_api');
 
-const {basename} = require('path');
+const { basename } = require('path');
 
 const severities = process.argv.slice(2);
 
@@ -25,9 +25,9 @@ amqp.connect('amqp://localhost', (err, connect) => {
   connect.createChannel((err1, channel) => {
     const ex = 'direct_logs';
 
-    channel.assertExchange(ex, 'direct', {durable: false});
+    channel.assertExchange(ex, 'direct', { durable: false });
 
-    channel.assertQueue('', {exclusive: true}, (err2, ok) => {
+    channel.assertQueue('', { exclusive: true }, (err2, ok) => {
       let quene = ok.queue,
         i = 0;
 
@@ -40,7 +40,7 @@ amqp.connect('amqp://localhost', (err, connect) => {
         }
       }
 
-      channel.consume(quene, logMessage, {noAck: true}, () => {
+      channel.consume(quene, logMessage, { noAck: true }, () => {
         console.log(`Waiting for logs`);
         sub(null);
       });

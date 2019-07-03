@@ -9,7 +9,7 @@ amqp.connect('amqp://localhost', (err, connection) => {
 
     var queue = 'quene';
     channel.assertQueue(queue, {
-      durable: false
+      durable: false,
     });
 
     console.log(`waiting`, queue);
@@ -21,7 +21,7 @@ amqp.connect('amqp://localhost', (err, connection) => {
         console.log(`receive msg ${content}`);
       },
       {
-        noAck: true
+        noAck: true,
       }
     );
   });

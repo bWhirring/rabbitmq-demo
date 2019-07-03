@@ -14,7 +14,7 @@ amq.connect('amqp://localhost', (err, connect) => {
     channel.consume(
       quene,
       msg => {
-        const {content} = msg;
+        const { content } = msg;
         var secs = content.toString().split('.').length - 1;
 
         console.log(' [x] Received %s', content.toString());

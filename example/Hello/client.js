@@ -11,16 +11,12 @@ amqp.connect('amqp://localhost', (err, connection) => {
     var msg = 'Hello World';
 
     channel.assertQueue(queue, {
-      durable: false
+      durable: false,
     });
 
     channel.sendToQueue(queue, Buffer.from(msg));
 
     console.log(`send %s`, msg);
+    channel.close(() => connection.close());
   });
-
-  setTimeout(() => {
-    connection.close();
-    process.exit(1);
-  }, 500);
 });
